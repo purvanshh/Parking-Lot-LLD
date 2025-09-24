@@ -178,6 +178,11 @@ classDiagram
     Vehicle --> VehicleType : type
     ParkingSpot --> SpotType : type
     Ticket --> TicketStatus : status
+    Ticket --> Vehicle : for
+    Ticket --> ParkingSpot : assigned
+    Ticket --> EntryGate : entered_through
+    Ticket --> ExitGate : exited_through
+    Receipt --> Ticket : generated_for
 
     ParkingSpot <|-- CarSpot
     ParkingSpot <|-- BikeSpot
@@ -189,14 +194,14 @@ classDiagram
     PricingStrategy <|.. HourlyPricingStrategy
     PricingStrategy <|.. FlatRatePricingStrategy
 
-    ParkingLot ||--o{ ParkingFloor : contains
-    ParkingLot ||--|| SpotInventory : manages
-    ParkingFloor ||--o{ ParkingSpot : contains
-    SpotInventory ||--o{ ParkingSpot : tracks
+    ParkingLot --> ParkingFloor : contains
+    ParkingLot --> SpotInventory : manages
+    ParkingFloor --> ParkingSpot : contains
+    SpotInventory --> ParkingSpot : tracks
 
-    ParkingService ||--|| ParkingLot : manages
-    ParkingService ||--|| SpotAllocationStrategy : uses
-    ParkingService ||--|| PricingStrategy : uses
+    ParkingService --> ParkingLot : manages
+    ParkingService --> SpotAllocationStrategy : uses
+    ParkingService --> PricingStrategy : uses
 
     %% Styling
     classDef enum fill:#e1f5fe
