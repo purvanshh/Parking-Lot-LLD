@@ -175,15 +175,15 @@ classDiagram
     }
 
     %% Relationships
-    Vehicle ||--|| VehicleType : uses
-    ParkingSpot ||--|| SpotType : has
-    ParkingSpot ||--|| Vehicle : parks
-    Ticket ||--|| TicketStatus : has
-    Ticket ||--|| Vehicle : for
-    Ticket ||--|| ParkingSpot : assigned
-    Ticket ||--|| EntryGate : entered_through
-    Ticket ||--|| ExitGate : exited_through
-    Receipt ||--|| Ticket : generated_for
+    Vehicle ||--|| VehicleType
+    ParkingSpot ||--|| SpotType
+    ParkingSpot ||--|| Vehicle
+    Ticket ||--|| TicketStatus
+    Ticket ||--|| Vehicle
+    Ticket ||--|| ParkingSpot
+    Ticket ||--|| EntryGate
+    Ticket ||--|| ExitGate
+    Receipt ||--|| Ticket
 
     ParkingSpot <|-- CarSpot
     ParkingSpot <|-- BikeSpot
